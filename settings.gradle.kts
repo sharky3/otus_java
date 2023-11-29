@@ -1,5 +1,6 @@
 rootProject.name = "otus_java"
 include("hw01-gradle")
+include("hw02-collections")
 
 pluginManagement {
     val jgitverPluginVersion: String by settings

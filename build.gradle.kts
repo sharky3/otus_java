@@ -95,6 +95,15 @@ subprojects {
                     "\${<meta.QUALIFIED_BRANCH_NAME}\${<meta.DIRTY_TEXT}-SNAPSHOT"
         )
     }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+        testLogging.showExceptions = true
+        reports {
+            junitXml.required.set(true)
+            html.required.set(true)
+        }
+    }
 }
 
 tasks {
