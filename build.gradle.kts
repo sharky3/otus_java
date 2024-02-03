@@ -51,6 +51,7 @@ allprojects {
         resolutionStrategy {
             failOnVersionConflict()
 
+            force("commons-logging:commons-logging:1.1.1")
             force("com.google.code.findbugs:jsr305:3.0.2")
             force("org.sonarsource.sslr:sslr-core:1.24.0.633")
             force("org.eclipse.platform:org.eclipse.osgi:3.18.400")
@@ -78,10 +79,12 @@ subprojects {
 
     val palantir: String by project
 
-    apply<SpotlessPlugin>()
-    configure<SpotlessExtension> {
-        java {
-            palantirJavaFormat(palantir)
+    if (project.name != "hw03-annotations") {
+        apply<SpotlessPlugin>()
+        configure<SpotlessExtension> {
+            java {
+                palantirJavaFormat(palantir)
+            }
         }
     }
 
